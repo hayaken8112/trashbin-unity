@@ -13,6 +13,12 @@ public class TrashGenerater : MonoBehaviour {
 
 	public AudioSource source;
 
+	Queue<GameObject> trashQueue;
+
+	void Start () {
+		trashQueue = new Queue<GameObject>();
+	}
+
 	public void OnRequest(HttpListenerContext context)
 	{
 		if (context.Request.HttpMethod == "POST"){
@@ -33,9 +39,11 @@ public class TrashGenerater : MonoBehaviour {
 			// GetComponent<Renderer>().material.mainTexture = texture;
 			Sprite texture_sprite = Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), new Vector2(0.5f,0.5f));
 			GameObject trash = Instantiate(trashPrefab, new Vector3(Random.Range(-1.0f,1.0f),5,0), Quaternion.identity);
+			trashQueue.Enqueue(trash);
 			SpriteRenderer sp = trash.GetComponent<SpriteRenderer>();
 			sp.sprite = texture_sprite;
 		}
+		Debug.Log(trashQueue.Count);
 		var data = System.Text.Encoding.UTF8.GetBytes(message);
 		context.Response.StatusCode = 200;
 		context.Response.Close(data, false);
