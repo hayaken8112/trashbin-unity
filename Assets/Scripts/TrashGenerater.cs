@@ -11,6 +11,8 @@ public class TrashGenerater : MonoBehaviour {
 
 	public string message = "Hello from Unity";
 
+	public AudioSource source;
+
 	public void OnRequest(HttpListenerContext context)
 	{
 		if (context.Request.HttpMethod == "POST"){
@@ -24,6 +26,8 @@ public class TrashGenerater : MonoBehaviour {
 
 			var texture = new Texture2D(100, 100);
 			texture.LoadImage(bytes);
+
+			source.Play();
 
 			// Image内に割り当てられたスクリプト内なら下記を呼ぶだけ。
 			// GetComponent<Renderer>().material.mainTexture = texture;
