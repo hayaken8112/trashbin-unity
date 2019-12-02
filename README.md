@@ -1,4 +1,8 @@
 # trashbin-unity
+http://www.iiiexhibition.com/#modal_work15
+
+<img src="http://www.iiiexhibition.com/images/works/work15/thumbnail.png"
+ alt="Last Contact Image" title="Last Contact" width="200" height="200" />
 
 ## 実行方法
 ### セットアップ
